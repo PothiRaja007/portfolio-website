@@ -13,3 +13,6 @@ export const NAV_LINKS = [
   { label: 'About', target: 'about' },
   { label: 'Contact', target: 'contact' },
 ]
+
+// The CountWise app (separate project/deployment). Sign-in happens THERE.
+export const COUNTWISE_APP_URL = 'https://countwise-one.vercel.app'

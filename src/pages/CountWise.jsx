@@ -2,6 +2,8 @@ import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import CountWiseHero from '../components/CountWiseHero'
 import { useTakeover } from '../context/TakeoverContext'
+import { COUNTWISE_APP_URL } from '../data/site'
+import { leaveToApp } from '../lib/leaveToApp'
 
 // Fades a block in once, when it first scrolls into view.
 function Reveal({ children, className = '' }) {
@@ -90,6 +92,24 @@ export default function CountWise() {
           <p className="spec__note">Illustrative example</p>
         </div>
       </Section>
+
+      <section className="cwcta">
+        <Reveal>
+          <h2 className="cwsec__title">Ready when you are.</h2>
+          <p className="cwsec__text">Sign in to start tracking.</p>
+          <a
+            href={COUNTWISE_APP_URL}
+            className="cw__signin"
+            onClick={(e) => {
+              if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return
+              e.preventDefault()
+              leaveToApp(COUNTWISE_APP_URL)
+            }}
+          >
+            Sign in to CountWise <span aria-hidden="true">→</span>
+          </a>
+        </Reveal>
+      </section>
 
       <footer className="cwfoot">
         <p className="cw__mono">COUNTWISE · BUILT BY POTHI RAJA D</p>
